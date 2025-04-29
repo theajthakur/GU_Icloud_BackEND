@@ -2,12 +2,13 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 
 const profile_handler = async (req, res) => {
+  const { mcookie } = req.params;
   const mdata = {};
   const response = await axios.get(
     "https://gu.icloudems.com/corecampus/student/myprofile/myprofile_nw.php",
     {
       headers: {
-        Cookie: "PHPSESSID=14bdab5409dbc37cd62c3a68823f7c4d",
+        Cookie: `PHPSESSID=${mcookie}`,
         Referer:
           "https://gu.icloudems.com/corecampus/student/student_index.php",
       },
@@ -29,6 +30,7 @@ const profile_handler = async (req, res) => {
   });
   mdata.generalInfo = dataArray;
   mdata.picture = $("#avatar2").attr("src");
+  mdata.name = $(".profile-picture h5").text().trim();
   res.json(mdata);
 };
 

@@ -4,6 +4,7 @@ const app = express();
 const PORT = process.env.SERVER_PORT || 8000;
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 const testRoute = require("./routes/profile");
 app.use("/", testRoute);

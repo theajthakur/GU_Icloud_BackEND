@@ -1,10 +1,8 @@
-const express = require("express");
-const router = express.Router();
 const axios = require("axios");
 const cheerio = require("cheerio");
-const fs = require("fs");
 
-router.get("/", async (req, res) => {
+const profile_handler = async (req, res) => {
+  const mdata = {};
   const response = await axios.get(
     "https://gu.icloudems.com/corecampus/student/myprofile/myprofile_nw.php",
     {
@@ -29,7 +27,9 @@ router.get("/", async (req, res) => {
     });
     dataArray.push(store);
   });
-  res.send(dataArray);
-});
+  mdata.generalInfo = dataArray;
+  mdata.picture = $("#avatar2").attr("src");
+  res.json(mdata);
+};
 
-module.exports = router;
+module.exports = { profile_handler };

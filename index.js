@@ -5,7 +5,7 @@ const PORT = process.env.SERVER_PORT || 8000;
 
 app.use(express.json());
 
-const testRoute = require("./routes/test");
+const testRoute = require("./routes/profile");
 app.use("/", testRoute);
 
 app.listen(PORT, () => {

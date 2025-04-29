@@ -18,7 +18,6 @@ const cookieFetcher = async (req, res) => {
     await page.goto("https://gu.icloudems.com/corecampus/index.php", {
       waitUntil: "networkidle2",
     });
-    console.log("Page Loaded, Attempt Logging");
 
     await page.waitForSelector("#useriid");
     await page.type("#useriid", studentId);
@@ -32,7 +31,6 @@ const cookieFetcher = async (req, res) => {
     const cookies = await page.cookies();
     const session = cookies.find((c) => c.name === "PHPSESSID");
     await browser.close();
-    console.log("Finding Details");
     if (session) {
       const endTime = new Date();
       return res.json({

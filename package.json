@@ -13,6 +13,10 @@
     "cheerio": "^1.0.0",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "puppeteer": "^24.7.2",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "qs": "^6.14.0"
   }
 }

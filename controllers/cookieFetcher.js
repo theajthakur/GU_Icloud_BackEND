@@ -13,7 +13,7 @@ const cookieFetcher = async (req, res) => {
         .status(400)
         .json({ status: "error", message: "Invalid Argument!" });
     const browser = await puppeteer.launch({
-      headless: false,
+      headless: true,
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
       executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined, // Safe fallback
     });
